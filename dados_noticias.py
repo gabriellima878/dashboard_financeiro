@@ -433,7 +433,7 @@ def ft(tema):
 
         try:
             
-            subtopico = noticia_principal.find("div", attrs={'class':"o-teaser__meta"}).a.text
+            subtopico = noticia_principal.find("div", attrs={'class':"js-teaser-standfirst-link"}).a.text
 
         except:
 
@@ -559,7 +559,7 @@ def scraping_noticias():
     ft_t = ft('tech')
     ft_dd = ft('deep_dive') 
 
-    noticias = pd.concat([bj_e, bj_t, g1_e, g1_t, valor_e, valor_t, f_e, f_t, f_ia, wsj_e, wsj_t, wsj_ia, ft_e, ft_t, ft_dd], ignore_index=True)
+    noticias = pd.concat([ft_e, ft_t, ft_dd], ignore_index=True)
 
     print(noticias)
 
@@ -568,6 +568,7 @@ def scraping_noticias():
 if __name__ == "__main__":
     
     scraping_noticias()
+
 
 
 

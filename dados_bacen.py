@@ -2,20 +2,28 @@ from bcb import sgs
 from datetime import timedelta
 from datetime import datetime
 import pandas as pd
+import time
 
 def att_inflacao():
-
     hoje = datetime.now()
-    inicio = hoje - timedelta(days = 4000)
-
+    inicio = hoje - timedelta(days=4000)
+    max_tentativas = 5
+    tentativas = 0
     inflacao = None
 
-    while isinstance(inflacao, pd.DataFrame) == False:
+    while tentativas < max_tentativas:
+        try:
+            inflacao = sgs.get({'ipca': 433, 'igp-m': 189}, start=inicio)
+            break  # Sai do loop se a solicitação for bem-sucedida
+        except Exception as e:
+            tentativas += 1
+            print(f"Tentativa {tentativas}: Erro - {e}")
+            time.sleep(5)  # Aguarda 5 segundos antes de tentar novamente
 
-        inflacao = sgs.get({'ipca': 433,
-                    'igp-m': 189}, start = inicio)
-    
-    inflacao = inflacao/100
+    if inflacao is None:
+        raise Exception("Não foi possível obter os dados de inflação após várias tentativas.")
+
+    inflacao = inflacao / 100
     inflacao.to_csv('inflacao.csv')
 
 def att_divida_pib():
@@ -70,8 +78,8 @@ def att_dolar():
 if __name__ == "__main__":
 
     # att_divida_pib()
-    # att_inflacao()
-    att_dolar()
+    att_inflacao()
+    # att_dolar()
 
 
 
