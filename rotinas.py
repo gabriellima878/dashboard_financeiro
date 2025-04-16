@@ -24,7 +24,11 @@ while True:
 
         end_time = time.time()  
         elapsed_time = end_time - start_time  
-        print(f"A função atualizar_rotinas foi concluída em {elapsed_time:.2f} segundos.")
+
+        # Converte o tempo para minutos e segundos
+        minutes = int(elapsed_time // 60)
+        seconds = int(elapsed_time % 60)
+        print(f"A função atualizar_rotinas foi concluída em {minutes} minutos e {seconds} segundos.")
 
     atualizar_rotinas()
 
