@@ -10,4 +10,5 @@ dolar.csv
 inflacao.csv
 noticias.csv
 tickers.csv
-dados_mt5.py
+.env
+*.env

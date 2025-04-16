@@ -14,6 +14,8 @@ import os
 
 def setores_bolsa(caminho_downloads):
 
+    print("\nColetando Setores da Bolsa...")
+
     options = Options()
     options.headless = False
 
@@ -60,6 +62,8 @@ def setores_bolsa(caminho_downloads):
 
 
 def composicao_ibov(caminho_downloads):
+
+    print("\nColetando composição do Ibovespa...")
 
     options = Options()
     options.headless = False

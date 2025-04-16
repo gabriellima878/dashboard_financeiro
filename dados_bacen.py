@@ -5,6 +5,9 @@ import pandas as pd
 import time
 
 def att_inflacao():
+
+    print("\nColetando dados de inflação...")
+
     hoje = datetime.now()
     inicio = hoje - timedelta(days=4000)
     max_tentativas = 5
@@ -28,6 +31,8 @@ def att_inflacao():
 
 def att_divida_pib():
 
+    print("\nColetando dados do PIB...")
+
     hoje = datetime.now()
     um_ano_atras = hoje - timedelta(days = 4000)
     dados = None
@@ -41,6 +46,8 @@ def att_divida_pib():
     dados.to_csv('divida_pib.csv')
 
 def att_dolar():
+
+    print("\nColetando dados do Dólar...")
 
     hoje = datetime.now()
     inicio = hoje - timedelta(days = 365 * 10)  # Tenta com 10 anos

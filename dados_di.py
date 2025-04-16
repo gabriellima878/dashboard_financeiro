@@ -11,6 +11,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 def webscraping_di():
 
+    print("\nIniciando webscraping de DI...")
+
     hoje = datetime.datetime.now()
     um_ano_atras = hoje - datetime.timedelta(days = 365)
     tres_anos_atras = hoje - datetime.timedelta(days = 365 * 3)
@@ -62,6 +64,8 @@ def webscraping_di():
 
     dados_di = pd.concat(lista_dfs, ignore_index=True)
     dados_di.to_csv("dados_di.csv", index = False)
+
+    print("\nFinalizando webscraping de DI...")
 
     return dados_di
 
